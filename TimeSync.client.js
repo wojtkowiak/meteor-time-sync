@@ -13,11 +13,37 @@ class TimeSyncCore {
         this.timeChangeDetectionStamp = null;
         this.timeChangeDetectionTimer = null;
         this.timeChangeDetectionTreshold = 15;
+        this.onSyncCallback = Function.prototype;
+        this.onInitialSyncCallback = Function.prototype;
+    }
+
+    onSync(callback) {
+        if (typeof callback === 'function') {
+            this.onSyncCallback = callback;
+        }
+    }
+
+    onInitialSync(callback) {
+        if (typeof callback === 'function') {
+            this.onInitialSyncCallback = callback;
+        }
+    }
+
+    getOffset() {
+        return this.offset;
     }
 
     processTimeOffset(message) {
-        this.synced = true;
         this.offset = message.timeOffset;
+        if (!this.synced) {
+            if (this.onInitialSyncCallback) {
+                this.onInitialSyncCallback(this.offset);
+            }
+        }
+        this.synced = true;
+        if (this.onSyncCallback) {
+            this.onSyncCallback(this.offset)
+        }
     }
 
     /**
