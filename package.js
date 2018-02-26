@@ -1,6 +1,6 @@
 Package.describe({
   name: 'omega:time-sync',
-  version: '0.0.1',
+  version: '0.1.0',
   summary: 'NTP style automatic server-client time synchronization',
   git: 'https://github.com/wojtkowiak/meteor-time-sync',
   documentation: 'README.md'

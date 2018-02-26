@@ -13,10 +13,26 @@ The time sync accuracy is very high ~20ms. By default 10 time measurements are m
 TimeSync.isSynced();
 
 /**
+ * Returns current time offset.
+ * @returns {number}
+ */
+TimeSync.getOffset();
+
+/**
  * Returns an unix timestamp like Date.now() but the time is synchronized with server.
  * @returns {number}
  */
 TimeSync.now();
+
+/**
+ * Sets a callback for the initial sync. 
+ */
+TimeSync.onInitialSync((offset) => {});
+
+/**
+ * Sets a callback for every sync. 
+ */
+TimeSync.onSync((offset) => {});
 
 /**
  * Start the time change detection.
