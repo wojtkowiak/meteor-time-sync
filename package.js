@@ -1,6 +1,6 @@
 Package.describe({
   name: 'omega:time-sync',
-  version: '0.1.0',
+  version: '0.1.1',
   summary: 'NTP style automatic server-client time synchronization',
   git: 'https://github.com/wojtkowiak/meteor-time-sync',
   documentation: 'README.md'
@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.4');
   api.use('ecmascript');
-  api.use('omega:custom-protocol@=3.1.0');
+  api.use('omega:custom-protocol@4.0.0');
   api.addFiles('TimeSync.protocol.js');
   api.addFiles('TimeSync.protocol');
   api.addFiles('TimeSync.client.js', 'client');

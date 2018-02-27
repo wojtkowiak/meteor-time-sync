@@ -1,6 +1,6 @@
 {
   "name": "meteor-time-sync",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "scripts": {
     "release": "meteor publish --release=METEOR@1.5.2.2"
   }
