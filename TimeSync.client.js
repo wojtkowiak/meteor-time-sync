@@ -36,11 +36,11 @@ class TimeSyncCore {
     processTimeOffset(message) {
         this.offset = message.timeOffset;
         if (!this.synced) {
+            this.synced = true;
             if (this.onInitialSyncCallback) {
                 this.onInitialSyncCallback(this.offset);
             }
         }
-        this.synced = true;
         if (this.onSyncCallback) {
             this.onSyncCallback(this.offset)
         }
