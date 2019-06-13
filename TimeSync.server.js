@@ -23,7 +23,7 @@ class TimeSyncCore {
     configure(options) {
         this.options = this.defaults;
         if (options) {
-            _.extend(this.options, options);
+            Object.assign(this.options, options);
         }
 
         Meteor.onConnection((connection) => {
@@ -64,7 +64,13 @@ class TimeSyncCore {
     }
 
     syncNow(sessionId) {
-        if (!(sessionId in Meteor.server.sessions)) {
+        if (
+            (
+                Meteor.server.sessions instanceof Map
+                && !Meteor.server.sessions.get(sessionId)
+            ) && !(sessionId in Meteor.server.sessions)
+        ) {
+            // In Meteor 1.8.1 object Meteor.server.sessions is a Map
             return;
         }
 
