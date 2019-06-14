@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.4');
   api.use('ecmascript');
-  api.use('omega:custom-protocol@4.0.2');
+  api.use('omega:custom-protocol@=4.0.2');
   api.addFiles('TimeSync.protocol.js');
   api.addFiles('TimeSync.protocol');
   api.addFiles('TimeSync.client.js', 'client');
@@ -19,9 +19,4 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-
-  api.use('omega:time-sync');
-  //api.addFiles('time-sync-tests.js');
 });
