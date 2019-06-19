@@ -32,11 +32,11 @@ class TimeSyncCore {
                this.syncNow(connection.id);
            }, this.options.initialSyncDelay);
 
-           connection.onClose = () => {
+           connection.onClose(() => {
                if (connection.id in this.sessions) {
                    delete this.sessions[connection.id];
                }
-           };
+           });
         });
 
         this.syncInterval = Meteor.setInterval(() => {
